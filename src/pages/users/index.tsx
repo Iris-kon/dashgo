@@ -6,7 +6,7 @@ import { RiAddLine, RiPencilLine } from "react-icons/ri"
 import { Header } from "../../components/Header"
 import { Pagination } from "../../components/Pagination"
 import { Sidebar } from "../../components/Sidebar"
-import { api } from "../../services/api"
+import { fakeApi } from "../../services/fakeApi"
 import { getUsers, useUsers } from "../../services/hooks/useUsers"
 import { queryClient } from "../../services/queryClient"
 
@@ -23,7 +23,7 @@ export default function UserList({ users }) {
 
     async function handlePrefetchUser(userId: string) {
         await queryClient.prefetchQuery(['user', userId], async () => {
-            const response = await api.get(`users/${userId}`)
+            const response = await fakeApi.get(`users/${userId}`)
 
             return response.data
         }, {

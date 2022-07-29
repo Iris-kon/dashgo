@@ -36,7 +36,7 @@ export function makeServer() {
         },
 
         routes() {
-            this.namespace = 'api'
+            this.namespace = 'fakeApi'
             this.timing = 750
 
             this.get('/users', function (schema, request) {
@@ -61,7 +61,7 @@ export function makeServer() {
             this.post('/users')
 
             this.namespace = ''
-            this.passthrough()
+            this.passthrough('http://localhost:3333/**')
         }
     })
 
